@@ -8,23 +8,22 @@ CONFIG += c++17
 
 SOURCES += \
     abstractmap.cpp \
-    dijkstra.cpp \
+    city.cpp \
     main.cpp \
     mainwindow.cpp \
-    mapio.cpp \
-    mapiofileinput.cpp \
-    mapionrw.cpp
+    map.cpp \
+    street.cpp
 
 HEADERS += \
     abstractmap.h \
-    dijkstra.h \
+    city.h \
     mainwindow.h \
-    mapio.h \
-    mapiofileinput.h \
-    mapionrw.h
+    map.h \
+    street.h
 
 FORMS += \
     mainwindow.ui
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
