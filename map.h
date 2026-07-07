@@ -5,7 +5,7 @@
 #include<city.h>
 #include<abstractmap.h>
 
-class Map : AbstractMap
+class Map : public AbstractMap
 {
 public:
     Map();

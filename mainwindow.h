@@ -2,8 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include<QGraphicsView>
-#include<map.h>
+#include <QGraphicsView>
+
+#include "map.h"
+#include "mapio.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -38,11 +40,18 @@ private slots:
 
     void on_streetErrorTest_clicked();
 
+    void on_addCity_clicked();
+
+    void on_addCityButton_clicked();
+
+    void on_fillMapButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     QGraphicsScene scene;
     Map map;
+    MapIo* mapIo;
 };
 #endif // MAINWINDOW_H
 

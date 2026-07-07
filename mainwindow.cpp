@@ -2,7 +2,9 @@
 #include "ui_mainwindow.h"
 #include "city.h"
 #include "street.h"
-#include <iostream>
+#include "cityadditionform.h"
+#include "mapionrw.h"
+
 #include <QMessageBox>
 #include <QRandomGenerator>
 
@@ -13,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     ui->graphicsView->setScene(&scene);
+    mapIo = new MapIoNrw();
 }
 
 MainWindow::~MainWindow()
@@ -116,6 +119,7 @@ void MainWindow::on_streetErrorTest_clicked()
 {
     QMessageBox msgBox;
     msgBox.setText(QString("Die Städte werden nicht zur Karte hinzugefügt."));
+    msgBox.exec();
 
     City c1("city c1", 20,50);
     City c2("city c1", 40,100);
@@ -124,5 +128,60 @@ void MainWindow::on_streetErrorTest_clicked()
     street.draw(scene);
 
     map.addStreet(&street);
+}
+
+
+void MainWindow::on_addCity_clicked()
+{
+    if(ui->addCity->isChecked())
+    {
+        ui->cityTestButton->hide();
+        ui->mapTestButton->hide();
+        ui->streetTestButton->hide();
+        ui->streetErrorTest->hide();
+        ui->testAddStreet->hide();
+        ui->testButton->hide();
+    }
+    else
+    {
+        ui->cityTestButton->show();
+        ui->mapTestButton->show();
+        ui->streetTestButton->show();
+        ui->streetErrorTest->show();
+        ui->testAddStreet->show();
+        ui->testButton->show();
+    }
+}
+
+
+void MainWindow::on_addCityButton_clicked()
+{
+    if(ui->addCity->isChecked())
+    {
+        cityAdditionForm addCityForm;
+
+        if(addCityForm.exec() == QDialog::Accepted)
+        {
+            City* newCity = addCityForm.createCity();
+
+            if(newCity != nullptr)
+            {
+                newCity->draw(scene);
+                map.addCity(newCity);
+            }
+        }
+    }
+    else
+    {
+        QMessageBox msgBox;
+        msgBox.setText(QString("Bitte drücken Sie zuerst ans 'City Addition Mode' Kästchen."));
+        msgBox.exec();
+    }
+}
+
+void MainWindow::on_fillMapButton_clicked()
+{
+    mapIo->fillMap(map);
+    map.draw(scene);
 }
 

@@ -9,19 +9,26 @@ CONFIG += c++17
 SOURCES += \
     abstractmap.cpp \
     city.cpp \
+    cityadditionform.cpp \
     main.cpp \
     mainwindow.cpp \
     map.cpp \
+    mapio.cpp \
+    mapionrw.cpp \
     street.cpp
 
 HEADERS += \
     abstractmap.h \
     city.h \
+    cityadditionform.h \
     mainwindow.h \
     map.h \
+    mapio.h \
+    mapionrw.h \
     street.h
 
 FORMS += \
+    cityadditionform.ui \
     mainwindow.ui
 
 

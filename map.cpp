@@ -17,6 +17,11 @@ void Map::addCity(City* newCity)
 
 void Map::draw(QGraphicsScene& scene)
 {
+    for(QList<Street*>::Iterator it = streetList.begin(); it != streetList.end(); it++)
+    {
+        (*it)->draw(scene);
+    }
+
     for(QList<City*>::Iterator it = cityList.begin(); it != cityList.end(); it++)
     {
         (*it)->draw(scene);
@@ -36,8 +41,9 @@ bool Map::addStreet(Street* street)
     }
     else
     {
-        msgBox.setText(QString("Die Straße wurde hinzugefügt."));
-        msgBox.exec();
+        /*msgBox.setText(QString("Die Straße wurde hinzugefügt."));
+        msgBox.exec();*/
+        qDebug() << QString("Die Straße wurde hinzugefügt.");
         streetList.append(street);
 
         return true;
