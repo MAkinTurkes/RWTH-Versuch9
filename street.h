@@ -12,6 +12,7 @@ public:
 
     Street(City* cityA, City* cityB);
     void draw(QGraphicsScene& scene);
+    void drawRed(QGraphicsScene& scene);
     City* getCityA() const;
     City* getCityB() const;
 

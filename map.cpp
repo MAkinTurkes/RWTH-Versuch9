@@ -12,7 +12,6 @@ Map::Map()
 void Map::addCity(City* newCity)
 {
     cityList.append(newCity);
-
     qDebug() << newCity->getName();
 }
 
@@ -77,6 +76,11 @@ QVector<Street*> Map::getStreetList(const City* city) const
     }
 
     return cityStreetList;
+}
+
+QList<City*> Map::getCityList() const
+{
+    return cityList;
 }
 
 City* Map::getOppositeCity(const Street* street, const City* city) const

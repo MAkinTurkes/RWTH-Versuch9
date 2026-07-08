@@ -46,6 +46,8 @@ private slots:
 
     void on_fillMapButton_clicked();
 
+    void on_dijkstraButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 

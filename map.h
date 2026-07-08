@@ -14,6 +14,7 @@ public:
     bool addStreet(Street*) override;
     City* findCity(const QString cityName) const override;
     QVector<Street*> getStreetList(const City* city) const override;
+    QList<City*> getCityList() const;
     City* getOppositeCity(const Street* street, const City* city) const override;
     double getLength(const Street* street) const override;
 

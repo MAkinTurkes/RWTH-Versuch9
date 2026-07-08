@@ -4,6 +4,7 @@
 #include "street.h"
 #include "cityadditionform.h"
 #include "mapionrw.h"
+#include "dijkstra.h"
 
 #include <QMessageBox>
 #include <QRandomGenerator>
@@ -167,6 +168,8 @@ void MainWindow::on_addCityButton_clicked()
             if(newCity != nullptr)
             {
                 newCity->draw(scene);
+                ui->dijkstraFirstCity->addItem(newCity->getName());
+                ui->dijkstraSecondCity->addItem(newCity->getName());
                 map.addCity(newCity);
             }
         }
@@ -182,6 +185,35 @@ void MainWindow::on_addCityButton_clicked()
 void MainWindow::on_fillMapButton_clicked()
 {
     mapIo->fillMap(map);
+    QList<City*> citiesToAdd = map.getCityList();
+    for(QList<City*>::ConstIterator it = citiesToAdd.constBegin(); it != citiesToAdd.constEnd(); it++)
+    {
+        ui->dijkstraFirstCity->addItem((*it)->getName());
+        ui->dijkstraSecondCity->addItem((*it)->getName());
+    }
+
     map.draw(scene);
+}
+
+
+void MainWindow::on_dijkstraButton_clicked()
+{
+    QVector<Street*> dijkWay = Dijkstra::search(map, ui->dijkstraFirstCity->currentText(), ui->dijkstraSecondCity->currentText());
+    Street* prevStreet = (*dijkWay.begin());
+
+    for(QVector<Street*>::ConstIterator it = dijkWay.constBegin(); it != dijkWay.constEnd(); it++)
+    {
+        (*it)->drawRed(scene);
+
+        if(prevStreet->getCityA()->getName() == (*it)->getCityA()->getName())
+        {
+            qDebug() << QString("von %1 zu %2").arg((*it)->getCityA()->getName(), (*it)->getCityB()->getName());
+        }
+        else
+        {
+            qDebug() << QString("von %1 zu %2").arg((*it)->getCityB()->getName(), (*it)->getCityA()->getName());
+        }
+        prevStreet = (*it);
+    }
 }
 

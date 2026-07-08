@@ -10,6 +10,7 @@ SOURCES += \
     abstractmap.cpp \
     city.cpp \
     cityadditionform.cpp \
+    dijkstra.cpp \
     main.cpp \
     mainwindow.cpp \
     map.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     abstractmap.h \
     city.h \
     cityadditionform.h \
+    dijkstra.h \
     mainwindow.h \
     map.h \
     mapio.h \
