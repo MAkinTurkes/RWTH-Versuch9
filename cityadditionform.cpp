@@ -19,33 +19,40 @@ cityAdditionForm::~cityAdditionForm()
 
 City* cityAdditionForm::createCity()
 {
+    int newCityX = ui->xLineEdit->text().toInt();
+    int newCityY = ui->yLineEdit->text().toInt();
+
+    qDebug() << "Neue Stadt erzeugt - Name:" << ui->stadtNameLineEdit->text() << "| X:" << newCityX << "| Y:" << newCityY;
+    return new City(ui->stadtNameLineEdit->text(), newCityX, newCityY);
+}
+
+void cityAdditionForm::on_buttonBox_accepted()
+{
     bool isIntX = false;
     bool isIntY = false;
     bool isNameEmpty = ui->stadtNameLineEdit->text().isEmpty();
 
-    int newCityX = ui->xLineEdit->text().toInt(&isIntX);
-    int newCityY = ui->yLineEdit->text().toInt(&isIntY);
+    ui->xLineEdit->text().toInt(&isIntX);
+    ui->yLineEdit->text().toInt(&isIntY);
 
-
-
-    if(isIntX && isIntY && !isNameEmpty)
-    {
-        qDebug() << "Neue Stadt erzeugt - Name:" << ui->stadtNameLineEdit->text() << "| X:" << newCityX << "| Y:" << newCityY;
-        return new City(ui->stadtNameLineEdit->text(), newCityX, newCityY);
-    }
-    else if(isNameEmpty)
+    if(isNameEmpty)
     {
         QMessageBox msgBox;
         msgBox.setText(QString("Die Name der Stadt kann nicht leer sein!"));
         msgBox.exec();
-        return nullptr;
+        return;
     }
-    else
+    else if(!isIntX || !isIntY)
     {
         QMessageBox msgBox;
         msgBox.setText(QString("Bitte geben Sie passende Koordinaten!"));
         msgBox.exec();
 
-        return nullptr;
+        return;
+    }
+    else
+    {
+        accept();
     }
 }
+

@@ -48,6 +48,10 @@ private slots:
 
     void on_dijkstraButton_clicked();
 
+    void on_testAbstractMapButton_clicked();
+
+    void on_addStreetButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 

@@ -19,6 +19,9 @@ public:
 
     City* createCity();
 
+private slots:
+    void on_buttonBox_accepted();
+
 private:
     Ui::cityAdditionForm *ui;
 };

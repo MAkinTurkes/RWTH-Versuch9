@@ -41,8 +41,6 @@ bool Map::addStreet(Street* street)
     }
     else
     {
-        /*msgBox.setText(QString("Die Straße wurde hinzugefügt."));
-        msgBox.exec();*/
         qDebug() << QString("Die Straße wurde hinzugefügt.");
         streetList.append(street);
 
