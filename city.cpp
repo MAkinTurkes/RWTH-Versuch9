@@ -18,17 +18,17 @@ void City::draw(QGraphicsScene& scene)
     qDebug() << QString("Die Stadt %1 wurde hinzugefügt.").arg(name);
 }
 
-QString City::getName()
+QString City::getName() const
 {
     return name;
 }
 
-int City::getX()
+int City::getX() const
 {
     return x;
 }
 
-int City::getY()
+int City::getY() const
 {
     return y;
 }

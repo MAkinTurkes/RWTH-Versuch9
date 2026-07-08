@@ -17,12 +17,12 @@ void Street::draw(QGraphicsScene& scene)
     scene.addLine(cityA->getX(), cityA->getY(), cityB->getX(), cityB->getY(), QPen(Qt::blue));
 }
 
-City* Street::getCityA()
+City* Street::getCityA() const
 {
     return cityA;
 }
 
-City* Street::getCityB()
+City* Street::getCityB() const
 {
     return cityB;
 }
