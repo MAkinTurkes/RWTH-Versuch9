@@ -20,6 +20,9 @@ public:
     City* createCity();
 
 private slots:
+    /**
+     * @brief Checks if the user input is correct, and if it is creates a new city.
+     */
     void on_buttonBox_accepted();
 
 private:

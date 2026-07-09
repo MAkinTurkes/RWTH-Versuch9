@@ -16,6 +16,11 @@ public:
     MapIoNrw();
     virtual ~MapIoNrw();
 
+    /**
+     * @brief This method adds cities and streets to the map.
+     *
+     * @param map The map that contains the city and street data.
+     */
     virtual void fillMap(AbstractMap &map);
 };
 

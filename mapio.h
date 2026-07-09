@@ -16,7 +16,11 @@ public:
     /// virtual Destructor
     virtual ~MapIo();
     
-    /// this method adds Cities and Streets to the provided Map.
+    /**
+     * @brief This method adds cities and streets to the map.
+     *
+     * @param map The map that contains the city and street data.
+     */
     virtual void fillMap(AbstractMap &map) = 0;
 };
 
